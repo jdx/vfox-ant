@@ -17,10 +17,7 @@ function util.parseVersions()
 
     -- The Apache listing prints "YYYY-MM-DD HH:MM" after each entry.
     local dates = {}
-    for href, day, time in string.gmatch(
-        resp.body,
-        '<a href="([^"]+)">[^<]*</a>%s+(%d%d%d%d%-%d%d%-%d%d) (%d%d:%d%d)'
-    ) do
+    for href, day, time in string.gmatch(resp.body, '<a href="([^"]+)">[^<]*</a>%s+(%d%d%d%d%-%d%d%-%d%d) (%d%d:%d%d)') do
         dates[href] = day .. "T" .. time .. ":00Z"
     end
 
